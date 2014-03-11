@@ -29,29 +29,24 @@
 - (void)move
 {
     
-//    CGPoint vel = self.velocity;
-//    
-//    // Bounce of the left and right sides:
-//    CGFloat width = CGRectGetWidth(self.view.bounds);
-//    if (CGRectGetMaxX(self.ballView.frame) >= width) {
-//        vel.x = -ABS(vel.x);
-//    } else if (CGRectGetMinX(self.ballView.frame) <= 0) {
-//        vel.x = ABS(vel.x);
-//    }
-//    
-//    // Bounce off the bottom and top:
-//    CGFloat height = CGRectGetHeight(self.view.bounds);
-//    if (CGRectGetMaxY(self.ballView.frame) >= height) {
-//        vel.y = -ABS(vel.y);
-//    } else if (CGRectGetMinY(self.ballView.frame) <= 0) {
-//        vel.y = ABS(vel.y);
-//    }
-//    self.velocity = vel;
-//    
-//    CGPoint pos = CGPointMake(self.ballXConstraint.constant,
-//                              self.ballYConstraint.constant);
-//    self.ballXConstraint.constant = pos.x + self.velocity.x;
-//    self.ballYConstraint.constant = pos.y + self.velocity.y;
+    CGVector vel = self.velocity;
+    
+    // Bounce of the left and right sides:
+    CGFloat width = CGRectGetWidth(self.superview.bounds);
+    if (CGRectGetMaxX(self.frame) >= width) {
+        vel.dx = -ABS(vel.dx);
+    } else if (CGRectGetMinX(self.frame) <= 0) {
+        vel.dx = ABS(vel.dx);
+    }
+    
+    // Bounce off the bottom and top:
+    CGFloat height = CGRectGetHeight(self.superview.bounds);
+    if (CGRectGetMaxY(self.frame) >= height) {
+        vel.dy = -ABS(vel.dy);
+    } else if (CGRectGetMinY(self.frame) <= 0) {
+        vel.dy = ABS(vel.dy);
+    }
+    self.velocity = vel;
     
     CGPoint loc = self.center;
     loc.x += self.velocity.dx;
