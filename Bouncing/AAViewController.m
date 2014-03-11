@@ -34,6 +34,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.balls = [NSMutableArray array];
+    
+    //Ball number 1
     AABallView *ballView = [[AABallView alloc] initWithFrame:CGRectMake(500.0, 500.0, 25.0, 25.0)];
     
     ballView.velocity = CGVectorMake(10.0, 10.0);
@@ -44,15 +46,28 @@
     
     self.velocity = CGPointMake(10.0, 10.0);
     
-    AABallView *ball2 = [[AABallView alloc] initWithFrame:CGRectMake(250.0, 250.0, 25.0, 25.0)];
+    //Ball number 2
+    AABallView *ballViewTwo = [[AABallView alloc] initWithFrame:CGRectMake(250.0, 100.0, 25.0, 25.0)];
     
-    ball2.velocity = CGVectorMake(10.0, 10.0);
+    ballViewTwo.velocity = CGVectorMake(10.0, 10.0);
     
-    [self.view addSubview:ball2];
+    [self.view addSubview:ballViewTwo];
     
-    [self.balls addObject:ball2];
+    [self.balls addObject:ballViewTwo];
     
     self.velocity = CGPointMake(10.0, 10.0);
+    
+    //Ball number 3
+    AABallView *ballViewThree = [[AABallView alloc] initWithFrame:CGRectMake(250.0, 500.0, 25.0, 25.0)];
+    
+    ballViewThree.velocity = CGVectorMake(10.0, 10.0);
+    
+    [self.view addSubview:ballViewThree];
+    
+    [self.balls addObject:ballViewThree];
+    
+    self.velocity = CGPointMake(10.0, 10.0);
+
 
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
