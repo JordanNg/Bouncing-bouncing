@@ -28,48 +28,40 @@
    
 }
 
+- (AABallView *)customBallViewWithLocation:(CGPoint)location velocity:(CGVector)velocity size:(CGSize)size
+{
+    AABallView *ballView = [[AABallView alloc] initWithFrame:CGRectMake(500.0, 500.0, size.width, size.height)];
+    
+    ballView.center = location;
+    
+    ballView.velocity = velocity;
+    
+    return ballView;
+}
+
 - (void)viewDidLoad
 {
+    self.view.backgroundColor = [UIColor redColor];
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     self.balls = [NSMutableArray array];
     
-    //Ball number 1
-    AABallView *ballView = [[AABallView alloc] initWithFrame:CGRectMake(500.0, 500.0, 25.0, 25.0)];
+    //Balls that are being created:
     
-    ballView.velocity = CGVectorMake(10.0, 10.0);
-    
-    [self.view addSubview:ballView];
-    
-    [self.balls addObject:ballView];
-    
-    self.velocity = CGPointMake(10.0, 10.0);
-    
-    //Ball number 2
-    AABallView *ballViewTwo = [[AABallView alloc] initWithFrame:CGRectMake(250.0, 100.0, 25.0, 25.0)];
-    
-    ballViewTwo.velocity = CGVectorMake(10.0, 10.0);
-    
-    [self.view addSubview:ballViewTwo];
-    
-    [self.balls addObject:ballViewTwo];
-    
-    self.velocity = CGPointMake(10.0, 10.0);
-    
-    //Ball number 3
-    AABallView *ballViewThree = [[AABallView alloc] initWithFrame:CGRectMake(250.0, 500.0, 25.0, 25.0)];
-    
-    ballViewThree.velocity = CGVectorMake(10.0, 10.0);
-    
-    [self.view addSubview:ballViewThree];
-    
-    [self.balls addObject:ballViewThree];
-    
-    self.velocity = CGPointMake(10.0, 10.0);
+    for (int i = 0; i < 1000; i ++) {
+        
+        //Ball Properties:
+        CGPoint location = CGPointMake(arc4random()%1000, arc4random()%1000);
+        CGVector velocity = CGVectorMake(arc4random()%10, arc4random()%10);
+        CGSize size = CGSizeMake(arc4random()%25, arc4random()%25);
 
+        //Creating the Balls:
+        AABallView *ballView = [self customBallViewWithLocation:location velocity:velocity size:size];
+        [self.view addSubview:ballView];
+        [self.balls addObject:ballView];
+    }
+    NSLog(@"Number Balls %i", [self.balls count]);
 
-    
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
                                                    selector:@selector(tick:)];
     

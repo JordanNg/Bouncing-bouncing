@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor magentaColor];
+        self.backgroundColor = [UIColor colorWithHue:((arc4random()%10)/10.0) saturation:arc4random() brightness:arc4random() alpha:1];
     }
     return self;
 }
